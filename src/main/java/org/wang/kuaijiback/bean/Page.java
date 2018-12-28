@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Deprecated
+//mybatis分页插件需要
 public class Page<T> {
     private T bean;
     private int pageNum;

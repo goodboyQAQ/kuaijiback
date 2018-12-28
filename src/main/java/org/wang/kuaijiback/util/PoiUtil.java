@@ -22,7 +22,7 @@ import java.util.List;
 @Component
 @Slf4j
 public class PoiUtil<T> {
-    public  Workbook getWorkBook(MultipartFile file) throws Exception{
+    public static Workbook getWorkBook(MultipartFile file) throws Exception{
         String fileName = file.getOriginalFilename().toLowerCase();
         InputStream is = null;
         try {
@@ -56,7 +56,7 @@ public class PoiUtil<T> {
      * @param clazz  对应实体类
      * @return
      */
-    public List<T> importExcel(Workbook workbook, Class<T> clazz){
+    public static<T> List<T> importExcel(Workbook workbook, Class<T> clazz){
         String[] fields=clazz.getAnnotation(ExcelTitle.class).value();
         List<T> list=new ArrayList<>();  //返回的对象列表
         Sheet sheet=workbook.getSheetAt(0);
@@ -86,7 +86,7 @@ public class PoiUtil<T> {
     }
 
     //导出
-    public void exportData(String fileName,List<T> list, HttpServletResponse response,Class<T> clazz){
+    public static<T> void exportData(String fileName,List<T> list, HttpServletResponse response,Class<T> clazz){
         Field[] field=clazz.getDeclaredFields();
         Workbook workbook=new XSSFWorkbook();
         Sheet sheet=workbook.createSheet();
@@ -127,7 +127,7 @@ public class PoiUtil<T> {
         }
     }
 
-    private String getCellStringVal(Cell cell) {
+    private static String getCellStringVal(Cell cell) {
         CellType cellType = cell.getCellTypeEnum();
         switch (cellType) {
             case NUMERIC:

@@ -11,7 +11,7 @@
 
 	<select id="getCompany"  resultType="Company">
 		select * from company
-		where state=0
+		where status=0
 		<if test='companyName!="" and companyName!=null'>
 			and company_name like concat('%',concat(#{companyName},'%'))
 		</if>

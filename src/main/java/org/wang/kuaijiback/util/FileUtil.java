@@ -17,7 +17,7 @@ public class FileUtil {
      * @param fileName  文件名
      * @param response
      */
-    public void download(InputStream is, String fileName, HttpServletResponse response){
+    public static void download(InputStream is, String fileName, HttpServletResponse response){
             response.setContentType("multipart/form-data");
             response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
             byte[] buffer=new byte[1024];
@@ -50,7 +50,7 @@ public class FileUtil {
             }
     }
 
-    public void upload(MultipartFile file){
+    public static void upload(MultipartFile file){
         if(file.isEmpty()){
             return;
         }

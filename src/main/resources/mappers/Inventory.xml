@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+		"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wang.kuaijiback.dao.InventoryDao">
+
+
+	<insert id="insertOne">
+		insert into inventory(name,type,belong,standard,price,unit,number,amount,remark,update_time)
+		values (#{name},#{type},#{belong},#{standard},#{price},#{unit},#{number},#{amount},#{remark},#{updateTime})
+
+	</insert>
+
+	<insert id="insertList">
+		insert into inventory(name,type,belong,standard,price,unit,number,amount,remark)
+		values
+		<foreach collection="list" item="model" separator=",">
+		(#{model.name},#{model.belong},#{model.standard},#{model.price},#{model.unit},#{model.number},#{model.amount},#{model.remark})
+		</foreach>
+	</insert>
+
+	<select id="getNumById" parameterType="java.lang.Integer">
+		select number
+		from inventory
+		where id =#{id}
+	</select>
+
+
+</mapper>

@@ -17,4 +17,9 @@ public class DemoController {
         return "i";
     }
 
+    @RequestMapping("/api/company/getcompany")
+    String aa(){
+        return "iaaaaaaa";
+    }
+
 }
